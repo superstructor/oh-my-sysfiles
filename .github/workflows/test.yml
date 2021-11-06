@@ -1,0 +1,10 @@
+name: Test
+on: [push]
+
+jobs:
+  ubuntu_focal:
+    name: Ubuntu 20.04
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./ubuntu-20.04.sh
