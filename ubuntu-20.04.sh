@@ -36,8 +36,8 @@ export NEOVIM_VERSION="0.5.0"
 export NEOVIM_SHA256SUM="cd59e885143e0fa7e43cfdacbc8e37dc033c56d9205b8f8a8acd08cd9f93737d"
 export EXA_VERSION="0.10.1"
 export EXA_SHA256SUM="a65a87bd545e969979ae9388f6333167f041a1f09fa9d60b32fd3072348ff6ce"
-export WEBSOCAT_VERSION="1.8.0"
-export WEBSOCAT_SHA256SUM="5968a3a2ede69fa8bb3df1419b908575f6532ce4eef250e1fcfbaadada3ccaef"
+export WEBSOCAT_VERSION="1.9.0"
+export WEBSOCAT_SHA256SUM="9ab17a9e03cca60fbf00aa709a1df5d9fb99a4514240cf7fac390470d6022bc5"
 export PUEUE_VERSION="1.0.3"
 export PUEUE_SHA256SUM="e79f0764ae7ec1e6d1ea0dae3f2ee6a6310fe3697e821cc20db4452a2c285364"
 export PUEUED_SHA256SUM="f5bcd2e8469898302446161bca3f9eb0e64e406051a90928795fca11678cfd40"
@@ -403,12 +403,12 @@ printf '\n\n'
 
 # Install websocat
 echo "Installing websocat ${WEBSOCAT_VERSION}..."
-wget -q "https://github.com/vi/websocat/releases/download/v${WEBSOCAT_VERSION}/websocat_${WEBSOCAT_VERSION}_newer_amd64.deb"
-echo "Verifying websocat_${WEBSOCAT_VERSION}_newer_amd64.deb checksum..."
-sha256sum "websocat_${WEBSOCAT_VERSION}_newer_amd64.deb"
-echo "${WEBSOCAT_SHA256SUM} *websocat_${WEBSOCAT_VERSION}_newer_amd64.deb" | sha256sum -c -
-dpkg -i "websocat_${WEBSOCAT_VERSION}_newer_amd64.deb"
-rm -f "websocat_${WEBSOCAT_VERSION}_newer_amd64.deb"
+wget -q "https://github.com/vi/websocat/releases/download/v${WEBSOCAT_VERSION}/websocat_linux64"
+echo "Verifying websocat_linux64 checksum..."
+sha256sum "websocat_linux64"
+echo "${WEBSOCAT_SHA256SUM} *websocat_linux64" | sha256sum -c -
+mv websocat_linux64 /usr/local/bin/websocat
+chmod +x /usr/local/bin/websocat
 printf '\n\n'
 
 # Install pueue
