@@ -499,9 +499,13 @@ let g:spacevim_localleader = ','
 
 " Refer to https://github.com/liuchengxu/space-vim/blob/master/layers/LAYERS.md for all available layers.
 let g:spacevim_layers = [
-      \ 'fzf', 'better-defaults', 'which-key',
+      \ 'better-defaults', 
+      \ 'c-c++', 'clojure', 'graphviz', 'html', 'java', 'javascript', 'markdown', 'python', 'typescript', 'wasm',
+      \ 'editing', 'programming',
+      \ 'airline',
+      \ 'file-manager', 'fzf', 'lsp', 'tmux',
       \ 'git', 'github',
-      \ 'clojure', 'graphviz', 'html', 'java', 'javascript', 'markdown', 'python', 'typescript', 'wasm',
+      \ 'better-motion', 'text-align', 'which-key',
       \ ]
 
 let g:spacevim_enable_true_color = 1
