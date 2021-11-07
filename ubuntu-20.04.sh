@@ -54,6 +54,7 @@ export KUBECTL_SHA256SUM="0751808ca8d7daba56bf76b08848ef5df6b887e9d7e8a9030dd371
 export GIT_GPGKEY="E1DD270288B4E6030699E45FA1715D88E1DF1F24"
 export PLANCK_GPGKEY="A5D6812987A6E53579AF0308D3D743111F327606"
 export CLICKHOUSE_GPGKEY="E0C56BD4"
+export MICROSOFT_PACKAGES_SHA256SUM="4df5811c41fdded83eb9e2da9336a8dfa5594a79dc8a80133bd815f4f85b9991"
 export DEBIAN_FRONTEND="noninteractive"
 
 cd /tmp
@@ -119,6 +120,14 @@ echo "Adding ClickHouse package repository..."
 echo "deb https://repo.clickhouse.com/deb/stable/ main/" > /etc/apt/sources.list.d/clickhouse.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $CLICKHOUSE_GPGKEY
 
+echo "Adding Microsoft package repository..."
+wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+echo "Verifying packages-microsoft-prod.deb checksum..."
+sha256sum "packages-microsoft-prod.deb"
+echo "${MICROSOFT_PACKAGES_SHA256SUM} *packages-microsoft-prod.deb" | sha256sum -c -
+dpkg -i packages-microsoft-prod.deb
+rm -f packages-microsoft-prod.deb
+
 # Refresh package lists after adding package repositories.
 apt-get update -qq
 
@@ -133,7 +142,7 @@ apt-get install -qq -y --no-install-recommends \
   # Editors:
   emacs-nox \
   # Build tools and language runtimes:
-  zsh build-essential cmake openjdk-$JVM_VERSION\-jdk-headless nodejs yarn python3-pip planck \
+  zsh build-essential cmake openjdk-$JVM_VERSION\-jdk-headless nodejs yarn python3-pip planck dotnet-sdk-5.0 \
   # Database clients:
   postgresql-client clickhouse-client \
   # Portable Network Graphic (PNG) format tools:
