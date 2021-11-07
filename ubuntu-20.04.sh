@@ -44,6 +44,8 @@ export WEBSOCAT_SHA256SUM="9ab17a9e03cca60fbf00aa709a1df5d9fb99a4514240cf7fac390
 export PUEUE_VERSION="1.0.3"
 export PUEUE_SHA256SUM="e79f0764ae7ec1e6d1ea0dae3f2ee6a6310fe3697e821cc20db4452a2c285364"
 export PUEUED_SHA256SUM="f5bcd2e8469898302446161bca3f9eb0e64e406051a90928795fca11678cfd40"
+export GREX_VERSION="1.3.0"
+export GREX_SHA256SUM="df47f82add291905af60d20a3499f6845c65bfe452fa9d30f8c7a900f45578e8"
 export POWERSHELL_VERSION="7.1.5"
 export POWERSHELL_SHA256SUM="4d0ee19617ebd696527e966a35a00f94ca3e83c850efdde10cd4b27369a17288"
 export OH_MY_POSH_VERSION="5.19.1"
@@ -446,6 +448,17 @@ echo "${PUEUED_SHA256SUM} *pueued-linux-x86_64" | sha256sum -c -
 mv pueue-linux-x86_64 /usr/local/bin/pueue
 mv pueued-linux-x86_64 /usr/local/bin/pueued
 chmod +x /usr/local/bin/pueue /usr/local/bin/pueued
+printf '\n\n'
+
+# Install grex
+echo "Installing grex ${GREX_VERSION}..."
+wget -q "https://github.com/pemistahl/grex/releases/download/v${GREX_VERSION}/grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+echo "Verifying grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz checksum..."
+sha256sum "grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+echo "${GREX_SHA256SUM} *grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz" | sha256sum -c -
+tar zxf "grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+rm -f "grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+mv grex /usr/local/bin/grex
 printf '\n\n'
 
 # Install PowerShell
