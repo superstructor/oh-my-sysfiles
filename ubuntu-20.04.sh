@@ -28,6 +28,8 @@ BAT_VERSION="0.18.3"
 BAT_SHA256SUM="3e85d15e5757d9f56af8f15bb99a56aaaab33ed541fa3ff1e1c585f5733845c3"
 DELTA_VERSION="0.9.2"
 DELTA_SHA256SUM="1f927b5eda756ce048146159bd30973f06c15448deefd06f60749d6aa15d255d"
+DASEL_VERSION="1.21.2"
+DASEL_SHA256SUM="23815ef39adf6feb2e0ea9cd1e630f4956acdf3cc6e950277326abb309099a1d"
 FD_VERSION="8.2.1"
 FD_SHA256SUM="f3a949325f1893145ced2b269a67d5763af3bede435c40e3b85b29afdb78c3d2"
 HEXYL_VERSION="0.9.0"
@@ -436,6 +438,16 @@ sha256sum "websocat_linux64"
 echo "${WEBSOCAT_SHA256SUM} *websocat_linux64" | sha256sum -c -
 mv websocat_linux64 /usr/local/bin/websocat
 chmod +x /usr/local/bin/websocat
+printf '\n\n'
+
+# Install Dasel
+echo "Installing Dasel ${DASEL_VERSION}..."
+wget -q "https://github.com/TomWright/dasel/releases/download/v${DASEL_VERSION}/dasel_linux_amd64"
+echo "Verifying dasel_linux_amd64 checksum..."
+sha256sum "dasel_linux_amd64"
+echo "${DASEL_SHA256SUM} *dasel_linux_amd64" | sha256sum -c -
+mv dasel_linux_amd64 /usr/local/bin/dasel
+chmod +x /usr/local/bin/dasel
 printf '\n\n'
 
 # Install pueue
