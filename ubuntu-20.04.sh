@@ -53,6 +53,7 @@ export KUBECTL_VERSION="1.22.1"
 export KUBECTL_SHA256SUM="78178a8337fc6c76780f60541fca7199f0f1a2e9c41806bded280a4a5ef665c9"
 export GIT_GPGKEY="E1DD270288B4E6030699E45FA1715D88E1DF1F24"
 export PLANCK_GPGKEY="A5D6812987A6E53579AF0308D3D743111F327606"
+export CLICKHOUSE_GPGKEY="E0C56BD4"
 export DEBIAN_FRONTEND="noninteractive"
 
 cd /tmp
@@ -114,6 +115,10 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/
 curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 printf '\n\n'
 
+echo "Adding ClickHouse package repository..."
+echo "deb https://repo.clickhouse.com/deb/stable/ main/" > /etc/apt/sources.list.d/clickhouse.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $CLICKHOUSE_GPGKEY
+
 # Refresh package lists after adding package repositories.
 apt-get update -qq
 
@@ -130,7 +135,7 @@ apt-get install -qq -y --no-install-recommends \
   # Build tools and language runtimes:
   zsh build-essential cmake openjdk-$JVM_VERSION\-jdk-headless nodejs yarn python3-pip planck \
   # Database clients:
-  postgresql-client \
+  postgresql-client clickhouse-client \
   # Portable Network Graphic (PNG) format tools:
   pngnq pngquant pngtools pngmeta pngcrush pngcheck \
   # Joint Photographic Experts Group (JPEG) format tools:
