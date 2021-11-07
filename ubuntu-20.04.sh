@@ -33,6 +33,8 @@ export HEXYL_VERSION="0.9.0"
 export HEXYL_SHA256SUM="9bf99a1441f2261fe3548a3b886e70a6e7bf78dc501b8209c2bbe342a535b194"
 export RIPGREP_VERSION="13.0.0"
 export RIPGREP_SHA256SUM="6d78bed13722019cb4f9d0cf366715e2dcd589f4cf91897efb28216a6bb319f1"
+export RCLONE_VERSION="1.57.0"
+export RCLONE_SHA256SUM="5a2a70b546bff92253c289e56d19746ee64a3944d14b6afa833e9991035ca18c"
 export NEOVIM_VERSION="0.5.0"
 export NEOVIM_SHA256SUM="cd59e885143e0fa7e43cfdacbc8e37dc033c56d9205b8f8a8acd08cd9f93737d"
 export EXA_VERSION="0.10.1"
@@ -388,6 +390,16 @@ sha256sum "ripgrep_${RIPGREP_VERSION}_amd64.deb"
 echo "${RIPGREP_SHA256SUM} *ripgrep_${RIPGREP_VERSION}_amd64.deb" | sha256sum -c -
 dpkg -i "ripgrep_${RIPGREP_VERSION}_amd64.deb"
 rm -f "ripgrep_${RIPGREP_VERSION}_amd64.deb"
+printf '\n\n'
+
+# Install rclone
+echo "Installing rclone ${RCLONE_VERSION}..."
+wget -q "https://downloads.rclone.org/v${RCLONE_VERSION}/rclone-v${RCLONE_VERSION}-linux-amd64.deb"
+echo "Verifying rclone-v${RCLONE_VERSION}-linux-amd64.deb checksum..."
+sha256sum "rclone-v${RCLONE_VERSION}-linux-amd64.deb"
+echo "${RCLONE_SHA256SUM} *rclone-v${RCLONE_VERSION}-linux-amd64.deb" | sha256sum -c -
+dpkg -i "rclone-v${RCLONE_VERSION}-linux-amd64.deb"
+rm -f "rclone-v${RCLONE_VERSION}-linux-amd64.deb"
 printf '\n\n'
 
 # Install exa
