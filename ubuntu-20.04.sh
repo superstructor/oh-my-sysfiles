@@ -20,6 +20,7 @@ export HASURA_CLI_VERSION="2.0.10"
 export HASURA_CLI_SHA256SUM="421100560cdba703219a3e30eace524ee189d21feea095db9f504718d9cc2c17"
 export LUMO_VERSION="1.10.1"
 export KARMA_CLI_VERSION="2.0.0"
+export TYPESCRIPT_VERSION="4.4.4"
 export GH_VERSION="2.2.0"
 export GH_SHA256SUM="effdb6df788f1e7af43857bda377c2c86d6905e0fa2b19c74c5552059df65830"
 export BAT_VERSION="0.18.3"
@@ -635,7 +636,8 @@ EOF
 echo "Installing Lumo and Karma CLI..."
 npm install -g --unsafe-perm \
   lumo-cljs@$LUMO_VERSION \
-  karma-cli@$KARMA_CLI_VERSION
+  karma-cli@$KARMA_CLI_VERSION \
+  typescript@$TYPESCRIPT_VERSION
 
 # Strip binaries of debugging symbols that are not stripped already so save
 # some space:
