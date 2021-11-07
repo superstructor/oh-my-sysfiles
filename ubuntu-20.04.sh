@@ -46,6 +46,8 @@ PUEUE_SHA256SUM="e79f0764ae7ec1e6d1ea0dae3f2ee6a6310fe3697e821cc20db4452a2c28536
 PUEUED_SHA256SUM="f5bcd2e8469898302446161bca3f9eb0e64e406051a90928795fca11678cfd40"
 GREX_VERSION="1.3.0"
 GREX_SHA256SUM="df47f82add291905af60d20a3499f6845c65bfe452fa9d30f8c7a900f45578e8"
+NGROK_VERSION="2.3.40"
+NGROK_SHA256SUM="a3028c933dd419933167ecd1b5f2b8b151a1d14b4b7afcbaaa3fcd5c94c03b3c"
 POWERSHELL_VERSION="7.1.5"
 POWERSHELL_SHA256SUM="4d0ee19617ebd696527e966a35a00f94ca3e83c850efdde10cd4b27369a17288"
 OH_MY_POSH_VERSION="5.19.1"
@@ -459,6 +461,17 @@ echo "${GREX_SHA256SUM} *grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz"
 tar zxf "grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz"
 rm -f "grex-v${GREX_VERSION}-x86_64-unknown-linux-musl.tar.gz"
 mv grex /usr/local/bin/grex
+printf '\n\n'
+
+# Install ngrok
+echo "Installing ngrok ${NGROK_VERSION}..."
+wget -q "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
+echo "Verifying ngrok-stable-linux-amd64.zip checksum..."
+sha256sum "ngrok-stable-linux-amd64.zip"
+echo "${NGROK_SHA256SUM} *ngrok-stable-linux-amd64.zip" | sha256sum -c -
+unzip "ngrok-stable-linux-amd64.zip" -d /usr/local/bin
+rm -f "ngrok-stable-linux-amd64.zip"
+ngrok --version
 printf '\n\n'
 
 # Install PowerShell
