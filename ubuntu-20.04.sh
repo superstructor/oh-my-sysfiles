@@ -117,20 +117,29 @@ printf '\n\n'
 # Refresh package lists after adding package repositories.
 apt-get update -qq
 
-# Install development tooling, common editors and language runtimes.
+# Install packages from apt repositories.
 apt-get install -qq -y --no-install-recommends \
+  # Development tools:
   git git-lfs diffstat jq silversearcher-ag fzf \
+  # System tools:
   neofetch ncdu htop zstd \
+  # Terminal tools:
   rlwrap less tmux openssh-client mosh \
+  # Editors:
   emacs-nox \
+  # Build tools and language runtimes:
   zsh build-essential cmake openjdk-$JVM_VERSION\-jdk-headless nodejs yarn python3-pip planck \
+  # Database clients:
+  postgresql-client \
+  # Portable Network Graphic (PNG) format tools:
   pngnq pngquant pngtools pngmeta pngcrush pngcheck \
+  # Joint Photographic Experts Group (JPEG) format tools:
   jhead jpeginfo jpegoptim jpegpixi \
-  # These are dependencies of powershell
+  # Dependencies of powershell:
   liblttng-ust-ctl4 liblttng-ust0 \
-  # These are dependencies of xvfb, Chrome and ChromeDriver that are common to all versions.
+  # Dependencies of xvfb, Chrome and ChromeDriver that are common to all versions:
   xvfb libxcomposite1 libxrandr2 libxss1 libxext6 \
-  # Voting in the popularity contest may help keep packages we use supported by Ubuntu.
+  # Voting in the popularity contest may help keep packages we use supported by Ubuntu:
   popularity-contest
 rm -rf /var/lib/apt/lists/*
 printf '\n\n'
